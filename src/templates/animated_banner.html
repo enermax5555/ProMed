@@ -1,0 +1,29 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/animated_banner.css' %}">
+<div class="static-slider7" style="background-image:url({% static 'img/healty_banner.jpeg' %})">
+  <div class="container">
+    <!-- Row  -->
+    <div class="row justify-content-center">
+      <!-- Column -->
+      <div class="col-md-8 align-self-center text-center">
+        <h1 class="title text-white typewrite" data-period="2000" data-type='[ "Healthy", "Products" ]'></h1>
+        <h5 class="text-white">Start taking care for your health!</h5>
+        <a class="btn btn-danger-gradiant rounded-pill btn-md mt-3 border-0 text-white" href="{% url 'product_list' %}"><span>Products <i class="ti-arrow-right"></i></span></a>
+       </div>
+      <!-- Column  Video modal form in the banner :/ -->
+<!--      <div class="modal fade" id="static-slide7">-->
+<!--        <div class="modal-dialog" role="document">-->
+<!--          <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--              <h5 class="modal-title">Watch video</h5>-->
+<!--              <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--								<span aria-hidden="true">×</span>-->
+<!--							</button>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+  </div>
+</div>
+<script src="{% static 'js/animated_banner.js' %}"></script>

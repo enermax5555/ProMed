@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    {% include 'animated_banner.html' %}
+    <!-- Introduction section -->
+    <div class="intro">
+        <h2>Introduction</h2>
+
+    </div>
+    {% include 'introduction_banners.html' %}
+    <div class="row" style="margin:1rem;padding: 1rem;">
+        <div class="col-md-4 col-12 text-left" style='background-color: orange;'>
+            <h1>We are</h1>
+            <p>We are people who are focused on people health</p>
+        </div>
+            <div class="col-md-4 col-12 text-center" style='background-color: orange;'>
+            <h1>Our targets</h1>
+            <p>Our primary target is the peoples health, we want to help people, who have different kind of disease's.</p>
+        </div>
+        <div class="col-md-4 col-12" style="background-color: orange;">
+            <h1>Our Team</h1>
+            <p>We are a team of young people.</p>
+        </div>
+    </div>
+
+    {% include 'carousel_home_animated.html' %}
+    <img class='d-block w-100' src="static/img/test.jpeg" style="padding: 5rem;">
+
+    <!-- Product section -->
+    <div class="features">
+        <h2>Features</h2>
+        {% include 'service_cards_for_about.html' %}
+    </div>
+    <div class="feedback">
+        <h2>Feedback</h2>
+        <p> We would like to hear your opinion for us, our work and purposes! </p>
+        {% include 'feedback.html' %}
+    </div>
+{% endblock content%}

@@ -1,0 +1,53 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/service_cards_about.css' %}">
+<div class="py-5 service-7">
+    <div class="container">
+        <!-- Row  -->
+        <div class="row">
+            <!-- Column -->
+            {% for item in products|slice:"0:3" %}
+            <div class="col-md-4 mb-4">
+                <div class="">
+                    <a href="{% url 'product_detail' item.slug %}">
+                    <img class="rounded img-fluid" src="{{ item.imageURL }}" alt="wrappixel kit" />
+                        </a>
+                    <div class="mt-4">
+                        <h6 class="font-weight-medium">{{ item.name }}</h6>
+                        <p class="mt-3">{{ item.short_desc }}</p>
+                       <!-- Learn more button -->
+    <!--                        <a href="" class="linking">Learn More</a>-->
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+<!--            &lt;!&ndash; Column &ndash;&gt;-->
+<!--            <div class="col-md-4 mb-4">-->
+<!--                <div class="">-->
+<!--                    <img class="rounded img-fluid" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/features/feature2/fruit.jpg" alt="wrappixel kit" />-->
+<!--                    <div class="mt-4">-->
+<!--                        <h6 class="font-weight-medium">Fruitful Results</h6>-->
+<!--                        <p class="mt-3">You can relay on our amazing features list and also our customer services will be great experience.</p>-->
+<!--                        &lt;!&ndash; Learn more button &ndash;&gt;-->
+<!--&lt;!&ndash;                        <a href="" class="linking">Learn More</a>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; Column &ndash;&gt;-->
+<!--            <div class="col-md-4 mb-4">-->
+<!--                <div class="">-->
+<!--                    <img class="rounded img-fluid" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/features/feature2/instant.jpg" alt="wrappixel kit" />-->
+<!--                    <div class="mt-4">-->
+<!--                        <h6 class="font-weight-medium">Instant Solutions</h6>-->
+<!--                        <p class="mt-3">You can relay on our amazing features list and also our customer services will be great experience.</p>-->
+<!--                        &lt;!&ndash; Learn more button &ndash;&gt;-->
+<!--&lt;!&ndash;                        <a href="" class="linking">Learn More</a>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+						<div class="col-md-12 mt-3 text-center">
+                <a class="btn btn-warning btn-md border-0 text-white" href="{% url 'product_list' %}"><span>Check our shop</span></a>
+            </div>
+        </div>
+    </div>
+</div>

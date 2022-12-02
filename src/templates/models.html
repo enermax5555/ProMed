@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/hovering_img5.css' %}" xmlns="http://www.w3.org/1999/html">
+<style>
+    .alert alert-warning {
+    backgroun-color: hex(#cf5340);
+    }
+</style>
+<h2> Shop </h2>
+
+    {% for i in object %}
+    <div class="col-lg-4" style="margin:auto;padding-top:4rem;">
+        <div id="content">
+        <a href="{% url 'product_detail' i.slug %}">
+        <div class="hvrbox">
+        <img class="hvrbox-layer_bottom" style="margin: 30;padding: auto;" src ="{{ i.imageURL }}">
+            <div class="hvrbox-layer_top">
+		<div class="hvrbox-text">{{ i.short_desc }}</div>
+	        </div>
+            </div>
+            </a>
+    <div class="box-element product" style="padding-bottom: 2rem;">
+        <h6><strong> {{ i.name }} </strong></h6>
+    <hr>
+        <a class="btn btn-outline-warning" href="{% url 'product_detail' i.slug %}">View</a>
+        {% if i.stock != 0 %}
+        <button data-product="{{i.id}} " data-scroll-to="scroll_id_test" data-action="add" class="btn btn-outline-primary add-btn update-cart scroll-link" style="font-size:1rem;">Add to cart<i class="fa fa-shopping-cart"></i></button>
+        {% else %}
+        <a class="scroll-link" data-scroll-to="scroll_id_test" href="{% url 'product_detail' i.slug %}"><button class="btn btn-outline-primary" style="font-size:1rem;">Add to cart<i class="fa fa-shopping-cart"></i></button></a>
+        {% endif %}
+        <h4 style="display: inline-block;float:right">${{ i.price|floatformat:2 }}</h4>
+    </div>
+
+    </div>
+</div>
+
+    {%endfor%}
+{% endblock content %}
+
+<script type="text/javascript">
+$('.scroll-link').click(function() {
+    var scrollTo = $(this).data('scroll-to');
+    $('html, body').animate({
+        scrollTop: $('#' + scrollTo).offset().top}, 400);
+    });
+});
+</script>

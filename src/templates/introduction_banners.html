@@ -1,0 +1,23 @@
+{% load static %}
+<style>
+    @media only screen and (max-width: 500px){
+    .img-responsive {
+        width:100%;
+        transform: scale(1,1);
+    }
+    }
+</style>
+<link rel="stylesheet" href="{% static 'css/introduction_banners.css' %}">
+<div class="py-5 bg-light c2a1 img-responsive" style="background-image:url({% static 'img/introduction_background_image.jpeg' %})">
+    <!-- Row -->
+    <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 align-self-center text-center">
+        <h1 class="mb-3 text-white font-weight-medium">Learn about us</h1>
+        <p class="font-weight-light text-white op-8">In our about page u can find any information for our products, from ingredients to how to use them, why should, how then can help u and so on. Take a time to check it u would be surprised!</p>
+        <a class="btn btn-danger-gradiant btn-md border-0 text-white mt-3 text-uppercase" href="{% url 'about' %}"><span>About us</span></a>
+      </div>
+    </div>
+    </div>
+    <!-- Row -->
+</div>

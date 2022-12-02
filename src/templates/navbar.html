@@ -1,0 +1,57 @@
+{% load static %}
+<style>
+    .navbar a{
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 1.7vw;
+    text-shadow: none;
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.navbar a:hover{
+        background-color: white;
+        color: black;
+}
+.navbar {
+    overflow: hidden;
+    background-color: orange;
+    padding: 0;
+}
+.alert {
+}
+</style>
+<link rel='stylesheet' href="{% static 'css/nav.css' %}">
+<div class="container" style="margin-bottom:5.5rem;">
+<nav id="navbar-top" class="navbar fixed-top topslide2">
+<!--    <div class="text-left">-->
+            <a class="navbar-left" href="{% url 'home' %}">Home</a>
+            <a class='navbar-left' href="{% url 'about' %}">About</a>
+            <a class='navbar-left' href="{% url 'product_list' %}">Models</a>
+            <a class='navbar-left' href="{% url 'contact' %}">Contact</a>
+<!--        </div>-->
+                <div class="srch">
+                <input id="searchform" type="text" placeholder="Search..."   />
+                    <img class="search=btn" href="#" src="{% static 'img/search1.png' %}">
+                </div>
+<!--                <i class="fa fa-shopping-cart fa-2x" style="float:right;margin-top: 0.5rem;margin-right:1rem;"></i>-->
+         </nav>
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{message.tags}} fixed-top" role="alert" style="margin-top:4rem; height:2rem; padding-top:0.2rem;">
+
+    {{ message }}
+           <a href=""><button type="button" class="btn btn-close close" data-dismiss="alert" aria-label="close" style="float:right;"></button></a>
+
+            </div>
+    {% endfor %}
+{% endif %}
+
+    </div>
+<script src="{% static 'js/Navbar.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+<script type="text/javascript">
+
+</script>

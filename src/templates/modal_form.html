@@ -1,0 +1,201 @@
+{% load static %}
+<!-- Button trigger modal -->
+<!-- Button trigger modal -->
+<!-- Modal -->
+<style>
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+}
+</style>
+
+<!--<script type="text/javascript">-->
+<!--      let user = '{{request.user}}'-->
+<!--  function getToken(name) {-->
+<!--    let cookieValue = null;-->
+<!--    if (document.cookie && document.cookie !== '') {-->
+<!--        const cookies = document.cookie.split(';');-->
+<!--        for (let i = 0; i < cookies.length; i++) {-->
+<!--            const cookie = cookies[i].trim();-->
+<!--            // Does this cookie string begin with the name we want?-->
+<!--            if (cookie.substring(0, name.length + 1) === (name + '=')) {-->
+<!--                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));-->
+<!--                break;-->
+<!--            }-->
+<!--        }-->
+<!--    }-->
+<!--    return cookieValue;-->
+<!--}-->
+<!--const csrftoken = getToken('csrftoken');-->
+<!--</script>-->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Shipment information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <div class="row" style="text-align: left;margin:auto;">
+    <div class="col-lg-12">
+      <form class="form-horizontal" id="form">
+        <fieldset>
+
+          <!-- Form Name -->
+<!--          <legend>Address Details</legend>-->
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-lg-4 control-label">First Name:</label>
+            <div class="col-lg-12">
+              <input type="text" name="First_Name" maxlength="10" pattern="[a-zA-Z]*[а-яА-Я]*" placeholder="First name.." class="form-control" required>
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-lg-4 control-label">Last Name:</label>
+            <div class="col-sm-12">
+              <input type="text" name="Last_Name" maxlength="15" pattern="[a-zA-Z]*[а-яА-Я]*" placeholder="Last name.." class="form-control" required>
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Email:</label>
+            <div class="col-sm-12">
+              <input type="email" name="Email" maxlength="40" placeholder="example@.com" class="form-control" required>
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Phone:</label>
+            <div class="col-sm-4">
+              <input type="number" name="Phone" placeholder="Your number.."
+                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                     maxlength='12' class="form-control" required
+              style="-webkit-appearance: none;margin: 0;">
+            </div>
+
+            <label class="col-sm-2 control-label">City:</label>
+            <div class="col-sm-4">
+              <input type="text" name="City" maxlength='20' pattern="[a-zA-Z]*[а-яА-Я]*" placeholder="City.." class="form-control" required>
+            </div>
+              <label class="col-sm-10 control-label">Post code:</label>
+            <div class="col-sm-4">
+              <input type="number" name="Zip_Code" min="1000" max="9999"
+                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                     maxlength='4' placeholder="Post code.." class="form-control" required>
+            </div>
+          </div>
+
+
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Address:</label>
+            <div class="col-sm-10">
+              <input type="text" name="Address" maxlength="30" placeholder="Address.." class="form-control" required>
+            </div>
+          </div>
+<!--          <div class="form-group">-->
+<!--            <label class="col-sm-2 control-label">Total:</label>-->
+<!--            <div class="col-sm-12 text-center">-->
+<!--              <input name="Total" type="text" value="{{order.get_cart_total}}">-->
+<!--            </div>-->
+<!--          </div>-->
+        </fieldset>
+    </div><!-- /.col-lg-12 -->
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back to cart</button>
+        <button id="make-payment" type="submit" class="btn btn-primary">Order</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="{% static 'js/modal_form.js' %}"></script>
+<script type="text/javascript">
+    let form = document.getElementById('form')
+    let shipping = '{{order.shipping}}'
+    let total = '{{order.get_cart_total}}'
+
+console.log(total)
+document.getElementById('make-payment').addEventListener('click', function(e){
+    submitFormData()
+})
+
+function submitFormData(){
+    console.log('Payment Button Clicked')
+
+<!--Varqnt za defaulth null na stoinostite i uncomment na dolniq kod-->
+    let shippingInfo = {
+        'First_Name': form.First_Name.value,
+        'Last_Name': form.Last_Name.value,
+        'Email': form.Email.value,
+        'Phone': form.Phone.value,
+        'City': form.City.value,
+        'Zip_Code': form.Zip_Code.value,
+        'Address': form.Address.value,
+<!--        'Total': form.Total.value,-->
+        'total': total,
+
+
+<!-- Alertcheta za nepopulneni grafi NEED FIX! -->
+    }
+    if (form.First_Name.value === ''){
+        alert('Enter your First Name please!');
+        return False;
+    } else if (form.Last_Name.value === '') {
+        alert('Enter your Last Name please!');
+        return False;
+    } else if (form.Email.value === '') {
+        alert('Enter your Email please!');
+        return False;
+    } else if (form.Phone.value === '') {
+        alert('Enter your Phone number please!');
+        return False;
+    } else if (form.City.value === '') {
+        alert('Enter your City please!');
+        return False;
+    } else if (form.Zip_Code.value === '' || form.Zip_Code.value < 1000) {
+        alert('Enter your Zip Code correct please!');
+        return False;
+    } else if (form.Address.value === '') {
+        alert('Enter your Address please!')
+        return False;
+    }
+
+<!--Ako default stoinostta trqbva da e null-->
+<!--    shippingInfo.First_Name = form.First_Name.value-->
+<!--    shippingInfo.Last_Name = form.Last_Name.value-->
+<!--    shippingInfo.Email = form.Email.value-->
+<!--    shippingInfo.Phone = form.Phone.value-->
+<!--    shippingInfo.City = form.City.value-->
+<!--    shippingInfo.Zip_Code = form.Zip_Code.value-->
+<!--    shippingInfo.Address = form.Address.value-->
+    let url = "/process_order/"
+    fetch(url, {
+        method:'POST',
+        headers: {
+            'Content-Type':'application/json',
+            'X-CSRFToken': csrftoken,
+        },
+        body:JSON.stringify({'form':shippingInfo})
+    })
+    .then((response) => response.json())
+    .then((data) => {
+          console.log('Success: ', data)
+          console.log('Data: ', data)
+          alert('Item Ordered!')
+          window.location.href="{% url 'home' %}"
+          })
+
+}
+
+</script>
