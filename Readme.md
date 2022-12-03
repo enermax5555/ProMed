@@ -2,8 +2,6 @@
 E-commerce web-page, builded with HTML, CSS, Javascript and Python-Django.
 
 ## Introduction
-- [ProMed](#promed)
-  - [Introduction](#introduction)
   - [Technologies](#technologies)
   - [Features](#features)
   - [What we still need](#what-we-still-need)
